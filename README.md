@@ -4,6 +4,8 @@
 
 Anki Redesign+ refreshes Anki with a cleaner, more modern visual style while keeping the workflow familiar.
 
+![Demo showing Anki Redesign+ themes](https://github.com/qais8r/anki-redesign-plus/blob/main/assets/demo.gif?raw=true)
+
 ## Features
 
 - Modern redesign across major Anki screens for a cleaner, consistent UI.
@@ -11,6 +13,8 @@ Anki Redesign+ refreshes Anki with a cleaner, more modern visual style while kee
 - Quick theme switching from `Tools > Anki Redesign+`.
 - Typography controls for font family and size.
 - Advanced editor for deeper preset customization.
+
+![Screenshot showing configuration menu of Anki Redesign+](https://github.com/qais8r/anki-redesign-plus/blob/main/assets/settings.png?raw=true)
 
 ## How To Use
 
