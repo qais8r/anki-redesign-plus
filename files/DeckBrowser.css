@@ -46,18 +46,18 @@ body center > table:first-of-type tr a.filtered {
   color: var(--link, var(--legacy-link)) !important;
 }
 a.deck {
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px 5px 5px;
   transition: all 0.5s !important;
   border-radius: 6px;
   margin-right: 5px;
   text-decoration: none !important;
 }
 a.collapse {
-  text-align: right;
+  text-align: left;
   font-family: monospace;
 }
 body center > table:first-of-type tr a.deck:hover {
-  padding: 5px 10px 5px 13px;
+  padding: 5px 10px 5px 8px;
   background-color: rgba(0, 0, 0, 0.07);
   margin-right: 0;
 }
