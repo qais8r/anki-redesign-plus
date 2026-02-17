@@ -12,7 +12,11 @@ button {
   text-transform: uppercase;
   background: initial;
   background-color: var(--frame-bg, var(--legacy-frame-bg));
-  transition: background 0.2s linear, color 0.3s ease-out;
-  box-shadow: rgb(0 0 0 / 20%) 0px 3px 7px -2px,
-    rgb(0 0 0 / 5%) 0px 5px 10px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+  transition:
+    background 0.2s linear,
+    color 0.3s ease-out;
+  box-shadow:
+    rgb(0 0 0 / 20%) 0px 3px 7px -2px,
+    rgb(0 0 0 / 5%) 0px 5px 10px 0px,
+    rgb(0 0 0 / 12%) 0px 1px 5px 0px;
 }

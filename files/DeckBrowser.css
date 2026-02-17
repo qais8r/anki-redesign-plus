@@ -30,7 +30,11 @@ body center > table:first-of-type tr.current {
 body center > table:first-of-type tr.current td {
   background: var(--current-deck, var(--legacy-current-deck));
 }
-body center > table:first-of-type tr:hover:not(.top-level-drag-row):not(.current) td {
+body
+  center
+  > table:first-of-type
+  tr:hover:not(.top-level-drag-row):not(.current)
+  td {
   background: transparent;
 }
 body center > table:first-of-type tr.current td:first-of-type {

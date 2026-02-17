@@ -17,7 +17,9 @@ body button:hover {
 }
 
 #study {
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   background: var(--button-primary-gradient-start);
 }
 

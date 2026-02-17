@@ -49,13 +49,7 @@
       "#252525",
       "--border-subtle"
     ],
-    "BURIED_FG": [
-      "Buried Foreground",
-      "",
-      "#f59e0b",
-      "#92400e",
-      "--buried-fg"
-    ],
+    "BURIED_FG": ["Buried Foreground", "", "#f59e0b", "#92400e", "--buried-fg"],
     "BUTTON_BG": [
       "Button Background",
       "Background color of buttons",
@@ -126,13 +120,7 @@
       "#2f67e1",
       "--button-primary-gradient-start"
     ],
-    "CANVAS": [
-      "Canvas",
-      "Window background",
-      "#f5f5f5",
-      "#2c2c2c",
-      "--canvas"
-    ],
+    "CANVAS": ["Canvas", "Window background", "#f5f5f5", "#2c2c2c", "--canvas"],
     "CANVAS_CODE": [
       "Canvas code",
       "Background of code editors",
@@ -161,20 +149,8 @@
       "#2c2c2c",
       "--canvas-overlay"
     ],
-    "CURRENT_DECK": [
-      "Selected Deck",
-      "",
-      "white",
-      "#363636",
-      "--current-deck"
-    ],
-    "DISABLED": [
-      "Disabled",
-      "",
-      "#858585",
-      "#737373",
-      "--disabled"
-    ],
+    "CURRENT_DECK": ["Selected Deck", "", "white", "#363636", "--current-deck"],
+    "DISABLED": ["Disabled", "", "#858585", "#737373", "--disabled"],
     "FAINT_BORDER": [
       "Faint Border",
       "",
@@ -315,55 +291,13 @@
       "#c084fc",
       "--flag7-fg"
     ],
-    "FLAG_1": [
-      "Flag 1 (red)",
-      "",
-      "#ef4444",
-      "#f87171",
-      "--flag-1"
-    ],
-    "FLAG_2": [
-      "Flag 2 (orange)",
-      "",
-      "#fb923c",
-      "#fdba74",
-      "--flag-2"
-    ],
-    "FLAG_3": [
-      "Flag 3 (green)",
-      "",
-      "#4ade80",
-      "#86efac",
-      "--flag-3"
-    ],
-    "FLAG_4": [
-      "Flag 4 (blue)",
-      "",
-      "#3b82f6",
-      "#60a5fa",
-      "--flag-4"
-    ],
-    "FLAG_5": [
-      "Flag 5 (pink)",
-      "",
-      "#e879f9",
-      "#f0abfc",
-      "--flag-5"
-    ],
-    "FLAG_6": [
-      "Flag 6 (turquoise)",
-      "",
-      "#2dd4bf",
-      "#5eead4",
-      "--flag-6"
-    ],
-    "FLAG_7": [
-      "Flag 7 (purple)",
-      "",
-      "#a855f7",
-      "#c084fc",
-      "--flag-7"
-    ],
+    "FLAG_1": ["Flag 1 (red)", "", "#ef4444", "#f87171", "--flag-1"],
+    "FLAG_2": ["Flag 2 (orange)", "", "#fb923c", "#fdba74", "--flag-2"],
+    "FLAG_3": ["Flag 3 (green)", "", "#4ade80", "#86efac", "--flag-3"],
+    "FLAG_4": ["Flag 4 (blue)", "", "#3b82f6", "#60a5fa", "--flag-4"],
+    "FLAG_5": ["Flag 5 (pink)", "", "#e879f9", "#f0abfc", "--flag-5"],
+    "FLAG_6": ["Flag 6 (turquoise)", "", "#2dd4bf", "#5eead4", "--flag-6"],
+    "FLAG_7": ["Flag 7 (purple)", "", "#a855f7", "#c084fc", "--flag-7"],
     "FOCUS_SHADOW": [
       "Focus Shadow",
       "",
@@ -371,13 +305,7 @@
       "#141414",
       "--focus-shadow-color"
     ],
-    "FRAME_BG": [
-      "Frame Background",
-      "",
-      "white",
-      "#363636",
-      "--frame-bg"
-    ],
+    "FRAME_BG": ["Frame Background", "", "white", "#363636", "--frame-bg"],
     "HIGHLIGHT_BG": [
       "Highlighted Background",
       "Background color of highlighted items",
@@ -392,27 +320,9 @@
       "white",
       "--highlight-fg"
     ],
-    "LEARN_COUNT": [
-      "Learn Count",
-      "",
-      "#dc2626",
-      "#f87171",
-      "--learn-count"
-    ],
-    "LINK": [
-      "Hyperlink",
-      "",
-      "#1d4ed8",
-      "#bfdbfe",
-      "--link"
-    ],
-    "MARKED_BG": [
-      "Marked Background",
-      "",
-      "#6366f1",
-      "#a855f7",
-      "--marked-bg"
-    ],
+    "LEARN_COUNT": ["Learn Count", "", "#dc2626", "#f87171", "--learn-count"],
+    "LINK": ["Hyperlink", "", "#1d4ed8", "#bfdbfe", "--link"],
+    "MARKED_BG": ["Marked Background", "", "#6366f1", "#a855f7", "--marked-bg"],
     "MEDIUM_BORDER": [
       "Medium Border",
       "",
@@ -420,13 +330,7 @@
       "#020202",
       "--medium-border"
     ],
-    "NEW_COUNT": [
-      "New Count",
-      "",
-      "#3b82f6",
-      "#93c5fd",
-      "--new-count"
-    ],
+    "NEW_COUNT": ["New Count", "", "#3b82f6", "#93c5fd", "--new-count"],
     "REVIEW_COUNT": [
       "Review Count",
       "",
@@ -560,13 +464,7 @@
       "#fef9c3",
       "--suspended-fg"
     ],
-    "TEXT_FG": [
-      "Text Foreground",
-      "",
-      "#020202",
-      "#fcfcfc",
-      "--text-fg"
-    ],
+    "TEXT_FG": ["Text Foreground", "", "#020202", "#fcfcfc", "--text-fg"],
     "TOOLTIP_BG": [
       "Tooltip Background",
       "",
@@ -574,20 +472,8 @@
       "#2c2c2c",
       "--tooltip-bg"
     ],
-    "WINDOW_BG": [
-      "Window Background",
-      "",
-      "#f5f5f5",
-      "#2c2c2c",
-      "--window-bg"
-    ],
-    "ZERO_COUNT": [
-      "Zero Count",
-      "",
-      "#c4c4c4",
-      "#202020",
-      "--zero-count"
-    ]
+    "WINDOW_BG": ["Window Background", "", "#f5f5f5", "#2c2c2c", "--window-bg"],
+    "ZERO_COUNT": ["Zero Count", "", "#c4c4c4", "#202020", "--zero-count"]
   },
   "version": {
     "major": -1,
