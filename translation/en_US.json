@@ -1,0 +1,18 @@
+{
+  "configuration_window_title": "Anki Redesign Configuration",
+  "theme_editor_window_title": "Anki Redesign Advanced Editor",
+  "font_label": "Font:",
+  "theme_preset_label": "Theme Preset:",
+  "settings_tab": "Settings",
+  "general_tab": "General",
+  "decks_tab": "Decks",
+  "browse_tab": "Browse",
+  "cancel_button": "Cancel",
+  "save_button": "Save",
+  "advanced_button": "Advanced",
+  "reset_colors_button": "Reset Colors",
+  "reset_colors_window_title": "Reset Colors",
+  "reset_colors_message": "Reset all colors in this preset theme?",
+  "reset_colors_notice": "Colors have been reset. Click Save to apply.",
+  "changes_message": "Some changes will take effect when you restart Anki."
+}

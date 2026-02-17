@@ -1,0 +1,17 @@
+{
+  "configuration_window_title": "Configuração do Anki-Redesign",
+  "theme_editor_window_title": "Editor Avançado do Anki-Redesign",
+  "font_label": "Fonte:",
+  "settings_tab": "Configurações",
+  "general_tab": "Geral",
+  "decks_tab": "Baralhos",
+  "browse_tab": "Painel",
+  "cancel_button": "Cancelar",
+  "save_button": "Salvar",
+  "advanced_button": "Avançado",
+  "reset_colors_button": "Reset Colors",
+  "reset_colors_window_title": "Reset colors",
+  "reset_colors_message": "Reset all colors to the default Anki theme?",
+  "reset_colors_notice": "Colors have been reset. Click Save to apply.",
+  "changes_message": "Algumas alterações só serão efetizadas quando o Anki for reiniciado."
+}

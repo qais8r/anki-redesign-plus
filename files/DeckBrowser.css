@@ -1,0 +1,63 @@
+.fancy tr.deck td {
+  border: unset;
+  padding: 4px 12px 4px 0 !important;
+}
+body > center > table > tbody > tr.top-level-drag-row.ui-droppable {
+  font-size: 1px;
+}
+body center > table:first-of-type {
+  width: 90%;
+  max-width: 600px;
+}
+body center > table:first-of-type th {
+  padding: 0 6px 6px 0;
+}
+body center > table:first-of-type td {
+  padding: 6px 6px 6px 0;
+}
+body center > table:first-of-type tr.deck td {
+  border-bottom: none;
+}
+body center > table:first-of-type tr.deck td.opts {
+  padding-left: 20px;
+}
+body center > table:first-of-type tr.deck td.opts > a {
+  display: flex;
+}
+body center > table:first-of-type tr.current {
+  background-color: transparent;
+}
+body center > table:first-of-type tr.current td {
+  background: var(--current-deck, var(--legacy-current-deck));
+}
+body center > table:first-of-type tr:hover:not(.top-level-drag-row):not(.current) td {
+  background: transparent;
+}
+body center > table:first-of-type tr.current td:first-of-type {
+  border-radius: 10px 0 0 10px;
+}
+body center > table:first-of-type tr.current td:last-of-type {
+  border-radius: 0 10px 10px 0;
+}
+body center > table:first-of-type tr a {
+  color: var(--text-fg, var(--legacy-text-fg)) !important;
+}
+body center > table:first-of-type tr a.filtered {
+  color: var(--link, var(--legacy-link)) !important;
+}
+a.deck {
+  padding: 5px 10px 5px 10px;
+  transition: all 0.5s !important;
+  border-radius: 6px;
+  margin-right: 5px;
+  text-decoration: none !important;
+}
+a.collapse {
+  text-align: right;
+  font-family: monospace;
+}
+body center > table:first-of-type tr a.deck:hover {
+  padding: 5px 10px 5px 13px;
+  background-color: rgba(0, 0, 0, 0.07);
+  margin-right: 0;
+}

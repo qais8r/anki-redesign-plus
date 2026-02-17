@@ -1,0 +1,17 @@
+{
+  "configuration_window_title": "Cửa sổ cấu hình Anki-redesign",
+  "theme_editor_window_title": "Soạn thảo văn bản Anki-redesign",
+  "font_label": "Nét chữ:",
+  "settings_tab": "Cài đặt",
+  "general_tab": "Cài đặt chung",
+  "decks_tab": "Bộ thẻ",
+  "browse_tab": "Duyệt",
+  "cancel_button": "Đóng",
+  "save_button": "Lưu",
+  "advanced_button": "Tùy chọn nâng cao",
+  "reset_colors_button": "Reset Colors",
+  "reset_colors_window_title": "Reset colors",
+  "reset_colors_message": "Reset all colors to the default Anki theme?",
+  "reset_colors_notice": "Colors have been reset. Click Save to apply.",
+  "changes_message": "Một số thay đổi sẽ hiệu lực khi bạn khởi động lại Anki."
+}

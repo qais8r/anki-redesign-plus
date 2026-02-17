@@ -1,0 +1,17 @@
+{
+  "configuration_window_title": "תצורת אנקי-עיצוב מחדש",
+  "theme_editor_window_title": "אנקי-עיצוב מחדש עורך מתקדם",
+  "font_label": "גופן:",
+  "settings_tab": "הגדרות",
+  "general_tab": "כללי",
+  "decks_tab": "חפיסות",
+  "browse_tab": "עיון",
+  "cancel_button": "בטל",
+  "save_button": "שמור",
+  "advanced_button": "מתקדם",
+  "reset_colors_button": "Reset Colors",
+  "reset_colors_window_title": "Reset colors",
+  "reset_colors_message": "Reset all colors to the default Anki theme?",
+  "reset_colors_notice": "Colors have been reset. Click Save to apply.",
+  "changes_message": "שינויים מסוימים ייכנסו לתוקף כאשר תפעיל מחדש את אנקי"
+}

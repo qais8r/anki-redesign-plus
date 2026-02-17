@@ -1,0 +1,17 @@
+{
+  "configuration_window_title": "Anki-redesign konfigurasjon",
+  "theme_editor_window_title": "Anki-redesign avansert redigering",
+  "font_label": "Font:",
+  "settings_tab": "Innstillinger",
+  "general_tab": "Generell",
+  "decks_tab": "Kortstokker",
+  "browse_tab": "Bibliotek",
+  "cancel_button": "Avbryt",
+  "save_button": "Lagre",
+  "advanced_button": "Avansert",
+  "reset_colors_button": "Reset Colors",
+  "reset_colors_window_title": "Reset colors",
+  "reset_colors_message": "Reset all colors to the default Anki theme?",
+  "reset_colors_notice": "Colors have been reset. Click Save to apply.",
+  "changes_message": "Noen endringer vil tre i kraft når du starter Anki på nytt."
+}

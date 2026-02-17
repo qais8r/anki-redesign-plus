@@ -1,0 +1,124 @@
+html {
+  height: 100%;
+  /* ADDED 10px TO MIN HEIGHT (original 65px) */
+  min-height: 75px;
+}
+body {
+  overflow: hidden;
+  height: 100%;
+}
+body #outer {
+  border-top: 1px solid transparent;
+  /* ADDED PADDING  */
+  padding-top: 10px; 
+  height: 100%;
+}
+body.nightMode #outer {
+  border-top-color: transparent;
+}
+body #outer table#innertable {
+  padding: 6px;
+  box-sizing: border-box;
+  transform: translateY(-14px);
+}
+body button {
+  margin: 0;
+}
+body .stat {
+  position: relative;
+  padding-top: 0px;
+  min-width: 120px;
+
+}
+body .stat2,
+body #middle td.stat2 {
+  padding-top: 0px;
+  font-weight: normal;
+}
+td[align="center"] {
+  position: relative;
+}
+body .stattxt,
+td[align="center"] > span {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 18px;
+  transform: translate(-50%, -10px);
+  color: var(--text-fg, var(--legacy-text-fg));
+}
+
+body .stattxt#time {
+  transform: translate(-50%, -8px);
+}
+body #outer button#ansbut,
+body #outer table button {
+  transform: translateY(12px);
+}
+/* ARBb addon fix */
+body #outer.arbb .stat {
+  min-width: auto;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+body #outer.arbb table#innertable {
+  padding: initial;
+  width: calc(100% - 10px);
+  transform: translateY(8px) !important;
+  height: 50px;
+}
+body #outer.arbb table #middle {
+  transform: translateY(0);
+}
+body .new-qt6 #outer.arbb table #middle {
+  transform: translateY(10px);
+}
+body #outer.arbb table #time {
+  display: inline-flex;
+  justify-content: center;
+  left: 50%;
+  transform: translate(-50%, calc(-100% - 12px))
+}
+body #outer.arbb table .stattxt {
+  transform: translate(-50%, -30px);
+}
+body .new-qt6 #outer.arbb table .stattxt {
+  transform: translate(-50%, -16px);
+}
+body #outer.arbb table button {
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  margin-left: 2px;
+  margin-right: 2px;
+  transform: translateY(-8px) !important;
+}
+
+/* 2.1.56 fix */
+body .new-qt6 ~ #outer #middle td.stat2 .stattxt,
+body .new-qt6 ~ #outer .stattxt#time {
+  top: -16px;
+}
+body .new-qt6 ~ #outer table#innertable {
+  transform: translateY(0);
+}
+
+body .new-qt6 ~ #outer  #middle table[cellspacing]  {
+  transform: translateY(-10px);
+}
+
+/* NDFS addon fix */
+body #outer.ndfs {
+  background: var(--frame-bg, var(--legacy-frame-bg)) !important;
+  transform: translateX(-8px);
+  border-radius: 10px 10px 0 0;
+}
+body #outer.ndfs table#innertable {
+  transform: translate(-3px, 20px) !important;
+  background: var(--frame-bg, var(--legacy-frame-bg)) !important;
+}
+body #outer.ndfs table#innertable tbody {
+  transform: translateX(6px);
+}
+body #outer.ndfs table:not(#innertable) {
+  position: relative !important;
+}
