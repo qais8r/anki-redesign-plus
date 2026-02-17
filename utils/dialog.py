@@ -771,7 +771,7 @@ def create_menu_action(parent: QWidget, dialog_class: QDialog, dialog_name: str)
 
 # === Menu Registration ===
 if not hasattr(mw, 'anki_redesign'):
-    mw.form.menuTools.addAction(create_menu_action(mw, AnkiRedesignConfigDialog, "Anki Redesign"))
+    mw.form.menuTools.addAction(create_menu_action(mw, AnkiRedesignConfigDialog, "Anki Redesign+"))
     mw.reset()
     update_theme()
     if 'Qt6' in QPalette.ColorRole.__module__:

@@ -1,5 +1,5 @@
 This is the advanced documentation for Anki-redesign's configuration:
-Use the built-in config at the menu (Tools > Anki Redesign) for a better user experience.
+Use the built-in config at the menu (Tools > Anki Redesign+) for a better user experience.
 
 - font: customize own font here
 - fallbackFonts: fallback font stack for the UI
