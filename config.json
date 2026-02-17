@@ -3,5 +3,6 @@
   "font": "Arial",
   "fallbackFonts": "sans-serif",
   "font_size": "14",
-  "font_customization_enabled": "false"
+  "font_customization_enabled": "false",
+  "show_restart_notice": "true"
 }

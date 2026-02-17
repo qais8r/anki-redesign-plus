@@ -5,4 +5,5 @@ Use the built-in config at the menu (Tools > Anki Redesign+) for a better user e
 - fallbackFonts: fallback font stack for the UI
 - font_size: customize own font size here
 - font_customization_enabled: enable/disable global font family/size override
+- show_restart_notice: show/hide the "restart Anki" notice after saving settings
 - theme_name: active preset theme file name (without `.json`)

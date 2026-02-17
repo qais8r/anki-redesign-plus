@@ -26,6 +26,7 @@ def get_config() -> dict:
         "fallbackFonts": raw.get("fallbackFonts", "sans-serif"),
         "font_size": int(raw.get("font_size", "14")),
         "font_customization_enabled": _to_bool(raw.get("font_customization_enabled", False)),
+        "show_restart_notice": _to_bool(raw.get("show_restart_notice", True), True),
         "theme_name": theme_name.strip(),
     }
     return config

@@ -602,7 +602,21 @@ class AnkiRedesignConfigDialog(QDialog):
         write_theme(ensure_user_theme(config["theme_name"]), themes_parsed)
         update_theme()
 
-        showInfo(self.texts["changes_message"])
+        if config.get("show_restart_notice", True):
+            popup = QMessageBox(self)
+            popup.setIcon(QMessageBox.Icon.Information)
+            popup.setWindowTitle(self.texts.get("configuration_window_title", "Anki Redesign Configuration"))
+            popup.setText(self.texts["changes_message"])
+            popup.setStandardButtons(QMessageBox.StandardButton.Ok)
+            dont_show_again = QCheckBox(
+                self.texts.get("dont_show_restart_notice", "Don't show this again.")
+            )
+            popup.setCheckBox(dont_show_again)
+            popup.exec()
+            if dont_show_again.isChecked():
+                config["show_restart_notice"] = False
+                write_config(config)
+                config = get_config()
         self.accept()
 # === Theme Application Utilities ===
 
