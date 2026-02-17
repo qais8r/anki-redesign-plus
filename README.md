@@ -1,5 +1,7 @@
 # Anki Redesign+
 
+Install the Anki addon from [AnkiWeb](https://ankiweb.net/shared/info/2119814566).
+
 ## Description
 
 Anki Redesign+ refreshes Anki with a cleaner, more modern visual style while keeping the workflow familiar.
