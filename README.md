@@ -16,8 +16,8 @@ Anki Redesign+ refreshes Anki with a cleaner, more modern visual style while kee
 - Typography controls for font family and size.
 - Advanced editor for deeper preset customization.
 
-![Screenshot showing configuration menu of Anki Redesign+](https://github.com/qais8r/anki-redesign-plus/blob/main/assets/settings.png?raw=true)
-
 ## How To Use
 
 Open Anki and go to `Tools > Anki Redesign+`. Choose the preset you want, adjust font options if needed, and save your changes. If a full refresh is needed, restart Anki.
+
+![GIF fading through all the different Anki Redesign+ themes](https://github.com/qais8r/anki-redesign-plus/blob/main/assets/showcase.gif?raw=true)
