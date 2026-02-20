@@ -187,17 +187,11 @@ class AnkiRedesignConfigDialog(QDialog):
 
         self.tab_settings = QWidget(objectName="settings")
         self.tab_settings_layout = QVBoxLayout(self.tab_settings)
-        self.tab_settings_layout.setContentsMargins(0, 0, 0, 0)
+        self.tab_settings_layout.setContentsMargins(12, 8, 12, 8)
         self.tab_settings_layout.setSpacing(0)
-        self.settings_scroll = QScrollArea()
-        self.settings_scroll.setWidgetResizable(True)
-        self.settings_scroll.setFrameShape(QFrame.Shape.NoFrame)
-        self.settings_scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.settings_scroll.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
         self.settings_content_widget = QWidget()
-        self.settings_scroll.setStyleSheet("QScrollArea { background: transparent; border: none; }")
         self.settings_layout = QFormLayout(self.settings_content_widget)
-        self.settings_layout.setContentsMargins(12, 8, 12, 8)
+        self.settings_layout.setContentsMargins(0, 0, 0, 0)
         self.settings_layout.setVerticalSpacing(10)
         self.theme_label = QLabel(self.texts.get("theme_preset_label", "Theme Preset:"))
         self.theme_label.setStyleSheet(
@@ -291,8 +285,8 @@ class AnkiRedesignConfigDialog(QDialog):
         self.settings_layout.addRow(self.font_size)
         self.update_font_customization_state()
 
-        self.settings_scroll.setWidget(self.settings_content_widget)
-        self.tab_settings_layout.addWidget(self.settings_scroll)
+        self.tab_settings_layout.addWidget(self.settings_content_widget)
+        self.tab_settings_layout.addStretch(1)
 
         self.tabs.resize(300, 200)
         self.tabs.addTab(self.tab_settings, self.texts["settings_tab"])
