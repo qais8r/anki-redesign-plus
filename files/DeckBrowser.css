@@ -8,7 +8,6 @@ body > center > table > tbody > tr.top-level-drag-row.ui-droppable {
 body center > table:first-of-type {
   width: 90%;
   max-width: 600px;
-  border: none !important;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 24px;
   transition: box-shadow 0.3s;
 }
