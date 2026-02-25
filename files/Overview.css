@@ -10,21 +10,15 @@ body button {
   letter-spacing: 0.02857em;
   text-transform: uppercase;
   min-width: 125px;
-}
-
-body button:hover {
-  border: none !important;
-}
-
-#study {
   transition:
     background 0.2s,
-    box-shadow 0.2s;
-  background: var(--button-primary-gradient-start);
+    box-shadow 0.2s !important;
+  background: var(--button-primary-gradient-start) !important;
 }
 
-#study:hover {
-  background: var(--button-primary-bg);
+button:hover {
+  border: none !important;
+  background: var(--button-primary-bg) !important;
 }
 
 #ankihub-flashcard-selector-open-button > div {
