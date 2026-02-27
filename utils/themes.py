@@ -70,6 +70,30 @@ def write_theme(file, theme_content):
     with open(file, "w", encoding="utf-8") as f:
         json.dump(theme_content, f, indent=2, sort_keys=True)
 
+
+def sync_bs_body_bg_with_canvas(theme_colors: dict) -> None:
+    canvas = theme_colors.get("CANVAS")
+    if not canvas or len(canvas) < 5:
+        return
+
+    light_value = canvas[2]
+    dark_value = canvas[3]
+    existing = theme_colors.get("BS_BODY_BG")
+    if existing and len(existing) >= 2:
+        display_name = existing[0] or "Bootstrap Body Background"
+        description = existing[1]
+    else:
+        display_name = "Bootstrap Body Background"
+        description = "Body background color (matches canvas)"
+
+    theme_colors["BS_BODY_BG"] = [
+        display_name,
+        description,
+        light_value,
+        dark_value,
+        "--bs-body-bg",
+    ]
+
 # === Theme Normalization ===
 def get_theme_from_parsed(themes_parsed: dict) -> dict:
     theme_colors = themes_parsed.get("colors")
@@ -206,6 +230,9 @@ def get_theme_from_parsed(themes_parsed: dict) -> dict:
             theme_colors[theme_keys["old"]] = [old_data[0], old_data[1], new_data[-3], new_data[-2], old_data[-1]]
         else:
             theme_colors[theme_keys["old"]] = theme_colors[theme_keys["new"]]
+
+    # Keep Bootstrap body background locked to canvas in both modes.
+    sync_bs_body_bg_with_canvas(theme_colors)
 
     themes_parsed["colors"] = theme_colors
     return themes_parsed

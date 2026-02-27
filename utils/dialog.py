@@ -304,10 +304,28 @@ class AnkiRedesignConfigDialog(QDialog):
     def update(self) -> None:
         self.reload_theme()
 
+    def sync_bs_body_bg_with_canvas(self) -> None:
+        canvas = self.theme_colors.get("CANVAS")
+        if not canvas or len(canvas) < 5:
+            return
+        if not self.theme_colors.get("BS_BODY_BG") or len(self.theme_colors["BS_BODY_BG"]) < 5:
+            self.theme_colors["BS_BODY_BG"] = [
+                "Bootstrap Body Background",
+                "Body background color (matches canvas)",
+                canvas[LIGHT_COLOR_MODE],
+                canvas[DARK_COLOR_MODE],
+                "--bs-body-bg",
+            ]
+            return
+        self.theme_colors["BS_BODY_BG"][2] = canvas[LIGHT_COLOR_MODE]
+        self.theme_colors["BS_BODY_BG"][3] = canvas[DARK_COLOR_MODE]
+        self.theme_colors["BS_BODY_BG"][4] = "--bs-body-bg"
+
     def reload_theme(self) -> None:
         global themes_parsed
         themes_parsed = get_theme(self.theme_name)
         self.theme_colors = themes_parsed.get("colors")
+        self.sync_bs_body_bg_with_canvas()
         self.refresh_color_inputs()
         self.refresh_theme_preview_icons()
 
@@ -483,6 +501,8 @@ class AnkiRedesignConfigDialog(QDialog):
         def save(color: QColor) -> None:
             rgb = color.name(QColor.NameFormat.HexRgb)
             self.theme_colors[key][color_mode] = rgb
+            if key == "CANVAS":
+                self.sync_bs_body_bg_with_canvas()
             set_color(rgb)
 
         self.updates.append(update)
@@ -581,6 +601,7 @@ class AnkiRedesignConfigDialog(QDialog):
         logger.debug(config)
 
         color_mode = get_effective_color_mode()
+        self.sync_bs_body_bg_with_canvas()
         themes_parsed["colors"] = self.theme_colors
         write_theme(ensure_user_theme(config["theme_name"]), themes_parsed)
         update_theme()
