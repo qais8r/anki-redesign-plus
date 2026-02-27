@@ -33,6 +33,8 @@ else:
 # === Dialog Constants ===
 MIN_WIDTH = 537
 MIN_HEIGHT = 589
+MIN_DIALOG_WIDTH = 360
+MIN_DIALOG_HEIGHT = 320
 
 # === Theme State ===
 LIGHT_COLOR_MODE = 2
@@ -137,9 +139,9 @@ class AnkiRedesignConfigDialog(QDialog):
         self.setWindowModality(Qt.WindowModality.ApplicationModal)
         self.setWindowTitle(self.texts["configuration_window_title"])
         self.setSizePolicy(self.make_size_policy())
-        # self.setMinimumSize(420, 580)
-        # self.setMinimumSize(MIN_WIDTH, MIN_HEIGHT)
-        self.resize(MIN_WIDTH, MIN_HEIGHT)
+        self.setMinimumSize(MIN_DIALOG_WIDTH, MIN_DIALOG_HEIGHT)
+        self.setSizeGripEnabled(True)
+        self.resize(self.fit_size_to_screen(MIN_WIDTH, MIN_HEIGHT))
         self.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
         set_dark_titlebar_qt(self, dwmapi, fix=False)
 
@@ -172,18 +174,10 @@ class AnkiRedesignConfigDialog(QDialog):
         self.layout = QVBoxLayout()
         self.tabs = QTabWidget(objectName="tabs")
         self.tabs.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self.tab_general = QWidget(objectName="general")
-        self.tab_general.setLayout(
-            self.create_color_picker_layout(self.theme_general))
-        self.tab_decks = QWidget(objectName="decks")
-        self.tab_decks.setLayout(
-            self.create_color_picker_layout(self.theme_decks))
-        self.tab_browse = QWidget(objectName="browse")
-        self.tab_browse.setLayout(
-            self.create_color_picker_layout(self.theme_browse))
-        self.tab_extra = QWidget(objectName="extra")
-        self.tab_extra.setLayout(
-            self.create_color_picker_layout(self.theme_extra))
+        self.tab_general = self.create_scrolled_color_tab("general", self.theme_general)
+        self.tab_decks = self.create_scrolled_color_tab("decks", self.theme_decks)
+        self.tab_browse = self.create_scrolled_color_tab("browse", self.theme_browse)
+        self.tab_extra = self.create_scrolled_color_tab("extra", self.theme_extra)
 
         self.tab_settings = QWidget(objectName="settings")
         self.tab_settings_layout = QVBoxLayout(self.tab_settings)
@@ -285,10 +279,13 @@ class AnkiRedesignConfigDialog(QDialog):
         self.settings_layout.addRow(self.font_size)
         self.update_font_customization_state()
 
-        self.tab_settings_layout.addWidget(self.settings_content_widget)
-        self.tab_settings_layout.addStretch(1)
+        settings_scroll = QScrollArea()
+        settings_scroll.setWidgetResizable(True)
+        settings_scroll.setFrameShape(QFrame.Shape.NoFrame)
+        settings_scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        settings_scroll.setWidget(self.settings_content_widget)
+        self.tab_settings_layout.addWidget(settings_scroll)
 
-        self.tabs.resize(300, 200)
         self.tabs.addTab(self.tab_settings, self.texts["settings_tab"])
         self.tabs.addTab(self.tab_general, self.texts["general_tab"])
         self.tabs.addTab(self.tab_decks, self.texts["decks_tab"])
@@ -300,6 +297,34 @@ class AnkiRedesignConfigDialog(QDialog):
         self.root_layout.addLayout(self.make_button_box())
         self.setLayout(self.root_layout)
         self.show()
+
+    def fit_size_to_screen(self, preferred_width: int, preferred_height: int) -> QSize:
+        screen = self.screen() or QGuiApplication.primaryScreen()
+        if not screen:
+            return QSize(preferred_width, preferred_height)
+        available = screen.availableGeometry()
+        max_width = max(MIN_DIALOG_WIDTH, int(available.width() * 0.94))
+        max_height = max(MIN_DIALOG_HEIGHT, int(available.height() * 0.90))
+        width = max(MIN_DIALOG_WIDTH, min(preferred_width, max_width))
+        height = max(MIN_DIALOG_HEIGHT, min(preferred_height, max_height))
+        return QSize(width, height)
+
+    def create_scrolled_color_tab(self, object_name: str, colors: list) -> QWidget:
+        tab = QWidget(objectName=object_name)
+        tab_layout = QVBoxLayout(tab)
+        tab_layout.setContentsMargins(0, 0, 0, 0)
+        tab_layout.setSpacing(0)
+
+        content_widget = QWidget()
+        content_widget.setLayout(self.create_color_picker_layout(colors))
+
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QFrame.Shape.NoFrame)
+        scroll.setWidget(content_widget)
+
+        tab_layout.addWidget(scroll)
+        return tab
 
     def update(self) -> None:
         self.reload_theme()
@@ -583,7 +608,7 @@ class AnkiRedesignConfigDialog(QDialog):
         return button_box
 
     def make_size_policy(self) -> QSizePolicy:
-        size_policy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Minimum)
+        size_policy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(self.sizePolicy().hasHeightForWidth())
