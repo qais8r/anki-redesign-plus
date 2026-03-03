@@ -121,7 +121,6 @@
       "--button-primary-gradient-start"
     ],
     "CANVAS": ["Canvas", "Window background", "#F9F2EE", "#2A211E", "--canvas"],
-    "BS_BODY_BG": ["Bootstrap Body Background", "Body background color (matches canvas)", "#F9F2EE", "#2A211E", "--bs-body-bg"],
     "CANVAS_CODE": [
       "Canvas code",
       "Background of code editors",

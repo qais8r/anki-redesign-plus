@@ -83,6 +83,9 @@ def load_custom_style(include_typography: bool = True):
         else:
             theme_colors_light += f"--{color_name.lower().replace('_','-')}: {color[LIGHT_COLOR_MODE]};\n        "
             theme_colors_dark += f"--{color_name.lower().replace('_','-')}: {color[DARK_COLOR_MODE]};\n        "
+    # Bootstrap aliases are derived from canonical vars, not theme JSON keys.
+    theme_colors_light += "--bs-body-bg: var(--canvas);\n        --bs-body-color: var(--canvas);\n        "
+    theme_colors_dark += "--bs-body-bg: var(--canvas);\n        --bs-body-color: var(--canvas);\n        "
     typography_css = ""
     if include_typography and current_config.get("font_customization_enabled", False):
         font = current_config["font"]
