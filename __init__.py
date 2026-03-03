@@ -71,21 +71,21 @@ logger.debug(dwmapi)
 
 # === CSS Injection Helpers ===
 def load_custom_style(include_typography: bool = True):
+    global themes_parsed
     current_config = get_config()
+    # Resolve theme from current config each render to avoid stale cached globals.
+    themes_parsed = get_theme(get_active_theme_name(current_config))
 
     theme_colors_light = ""
     theme_colors_dark = ""
     for color_name in themes_parsed.get("colors"):
         color = themes_parsed.get("colors").get(color_name)
         if color[-1]:
-            theme_colors_light += f"{color[-1]}: {color[LIGHT_COLOR_MODE]};\n        "
-            theme_colors_dark += f"{color[-1]}: {color[DARK_COLOR_MODE]};\n        "
+            theme_colors_light += f"{color[-1]}: {color[LIGHT_COLOR_MODE]} !important;\n        "
+            theme_colors_dark += f"{color[-1]}: {color[DARK_COLOR_MODE]} !important;\n        "
         else:
-            theme_colors_light += f"--{color_name.lower().replace('_','-')}: {color[LIGHT_COLOR_MODE]};\n        "
-            theme_colors_dark += f"--{color_name.lower().replace('_','-')}: {color[DARK_COLOR_MODE]};\n        "
-    # Bootstrap aliases are derived from canonical vars, not theme JSON keys.
-    theme_colors_light += "--bs-body-bg: var(--canvas);\n        --bs-body-color: var(--canvas);\n        "
-    theme_colors_dark += "--bs-body-bg: var(--canvas);\n        --bs-body-color: var(--canvas);\n        "
+            theme_colors_light += f"--{color_name.lower().replace('_','-')}: {color[LIGHT_COLOR_MODE]} !important;\n        "
+            theme_colors_dark += f"--{color_name.lower().replace('_','-')}: {color[DARK_COLOR_MODE]} !important;\n        "
     typography_css = ""
     if include_typography and current_config.get("font_customization_enabled", False):
         font = current_config["font"]
@@ -114,6 +114,16 @@ def load_custom_style(include_typography: bool = True):
     :root body.isLin.nightMode {
         %s
     }
+    /* Bootstrap aliases: set on broad scopes to beat local data-bs-theme/body overrides. */
+    :root,
+    html,
+    body,
+    [data-bs-theme],
+    html[data-bs-theme],
+    body[data-bs-theme] {
+        --bs-body-bg: var(--canvas) !important;
+        --bs-body-color: var(--canvas) !important;
+    }
 %s
 </style>
     """ % (theme_colors_light, theme_colors_dark, typography_css)
@@ -128,6 +138,62 @@ def load_custom_style_wrapper():
     """
     return custom_style
 
+
+def load_bootstrap_alias_enforcer_script() -> str:
+    return """
+<script>
+(() => {
+    if (window.__ankiRedesignBootstrapAliasEnforcer) {
+        return;
+    }
+    window.__ankiRedesignBootstrapAliasEnforcer = true;
+
+    const applyAliases = () => {
+        const targets = [document.documentElement, document.body, ...document.querySelectorAll("[data-bs-theme]")];
+        for (const el of targets) {
+            if (!el) {
+                continue;
+            }
+            el.style.setProperty("--bs-body-bg", "var(--canvas)", "important");
+            el.style.setProperty("--bs-body-color", "var(--canvas)", "important");
+        }
+    };
+
+    let queued = false;
+    const queueApply = () => {
+        if (queued) {
+            return;
+        }
+        queued = true;
+        requestAnimationFrame(() => {
+            queued = false;
+            applyAliases();
+        });
+    };
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", queueApply, { once: true });
+    }
+
+    queueApply();
+    setTimeout(queueApply, 0);
+    setTimeout(queueApply, 50);
+    setTimeout(queueApply, 250);
+
+    const root = document.documentElement;
+    if (root) {
+        const observer = new MutationObserver(() => queueApply());
+        observer.observe(root, {
+            subtree: true,
+            childList: true,
+            attributes: true,
+            attributeFilter: ["class", "data-bs-theme"],
+        });
+    }
+})();
+</script>
+"""
+
 # === Webview Styling Hook ===
 def on_webview_will_set_content(web_content: WebContent, context: Optional[Any]) -> None:
     logger.debug(context)
@@ -138,6 +204,7 @@ def on_webview_will_set_content(web_content: WebContent, context: Optional[Any])
     )
     web_content.css.append(css_files_dir['global'])
     web_content.head += load_custom_style(include_typography=not is_card_rendering_context)
+    web_content.head += load_bootstrap_alias_enforcer_script()
     if isinstance(context, DeckBrowser):
         web_content.css.append(css_files_dir['DeckBrowser'])
     elif isinstance(context, TopToolbar):
