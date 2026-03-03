@@ -84,8 +84,8 @@ def load_custom_style(include_typography: bool = True):
             theme_colors_light += f"{color[-1]}: {color[LIGHT_COLOR_MODE]} !important;\n        "
             theme_colors_dark += f"{color[-1]}: {color[DARK_COLOR_MODE]} !important;\n        "
         else:
-            theme_colors_light += f"--{color_name.lower().replace('_','-')}: {color[LIGHT_COLOR_MODE]} !important;\n        "
-            theme_colors_dark += f"--{color_name.lower().replace('_','-')}: {color[DARK_COLOR_MODE]} !important;\n        "
+            theme_colors_light += f"--{color_name.lower().replace('_','-')}: {color[LIGHT_COLOR_MODE]};\n        "
+            theme_colors_dark += f"--{color_name.lower().replace('_','-')}: {color[DARK_COLOR_MODE]};\n        "
     typography_css = ""
     if include_typography and current_config.get("font_customization_enabled", False):
         font = current_config["font"]
