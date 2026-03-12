@@ -25,6 +25,9 @@ def get_config() -> dict:
         "font": raw.get("font", "Arial"),
         "fallbackFonts": raw.get("fallbackFonts", "sans-serif"),
         "font_size": int(raw.get("font_size", "14")),
+        "match_card_template_background_to_theme": _to_bool(
+            raw.get("match_card_template_background_to_theme", True), True
+        ),
         "font_customization_enabled": _to_bool(raw.get("font_customization_enabled", False)),
         "show_restart_notice": _to_bool(raw.get("show_restart_notice", True), True),
         "theme_name": theme_name.strip(),

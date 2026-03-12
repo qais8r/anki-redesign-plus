@@ -1,6 +1,7 @@
 {
   "configuration_window_title": "Anki Redesign Configuration",
   "theme_editor_window_title": "Anki Redesign Advanced Editor",
+  "match_card_template_background_to_theme": "Match card template background to theme",
   "font_label": "Font:",
   "theme_preset_label": "Theme Preset:",
   "settings_tab": "Settings",

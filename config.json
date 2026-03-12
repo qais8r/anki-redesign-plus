@@ -3,6 +3,7 @@
   "font": "Arial",
   "fallbackFonts": "sans-serif",
   "font_size": "14",
+  "match_card_template_background_to_theme": "true",
   "font_customization_enabled": "false",
   "show_restart_notice": "true"
 }

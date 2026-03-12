@@ -27,6 +27,7 @@ css_files_dir = {
     "QNewDeckStats": os.path.join(files_dir, "QNewDeckStats.css"),
     "QPreferences": os.path.join(files_dir, "QPreferences.css"),
     "Reviewer": f"/_addons/{addon_package}/files/Reviewer.css",
+    "ReviewerCardBackground": f"/_addons/{addon_package}/files/ReviewerCardBackground.css",
     "ReviewerBottomBar": f"/_addons/{addon_package}/files/ReviewerBottomBar.css",
     "TopToolbar": f"/_addons/{addon_package}/files/TopToolbar.css",
 }

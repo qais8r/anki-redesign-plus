@@ -32,7 +32,7 @@ else:
 
 # === Dialog Constants ===
 MIN_WIDTH = 537
-MIN_HEIGHT = 589
+MIN_HEIGHT = 680
 MIN_DIALOG_WIDTH = 360
 MIN_DIALOG_HEIGHT = 320
 
@@ -251,6 +251,28 @@ class AnkiRedesignConfigDialog(QDialog):
         theme_to_font_gap.setFixedHeight(14)
         self.settings_layout.addRow(theme_to_font_gap)
 
+        self.match_card_template_background_to_theme = QCheckBox(
+            self.texts.get(
+                "match_card_template_background_to_theme",
+                "Match card template background to theme",
+            )
+        )
+        self.match_card_template_background_to_theme.setCursor(
+            QCursor(Qt.CursorShape.PointingHandCursor)
+        )
+        self.match_card_template_background_to_theme.setChecked(
+            bool(self.current_config.get("match_card_template_background_to_theme", True))
+        )
+        self.settings_layout.addRow(self.match_card_template_background_to_theme)
+
+        font_section_gap = QWidget()
+        font_section_gap.setFixedHeight(8)
+        self.settings_layout.addRow(font_section_gap)
+        self.font_label = QLabel(self.texts["font_label"])
+        self.font_label.setStyleSheet(
+            'QLabel { font-size: 14px; font-weight: bold }')
+        self.settings_layout.addRow(self.font_label)
+
         self.enable_font_customization = QCheckBox(
             self.texts.get("enable_font_customization", "Enable font customization")
         )
@@ -263,10 +285,6 @@ class AnkiRedesignConfigDialog(QDialog):
         )
         self.settings_layout.addRow(self.enable_font_customization)
 
-        self.font_label = QLabel(self.texts["font_label"])
-        self.font_label.setStyleSheet(
-            'QLabel { font-size: 14px; font-weight: bold }')
-        self.settings_layout.addRow(self.font_label)
         self.interface_font = QFontComboBox()
         self.interface_font.setFixedWidth(200)
         self.interface_font.setCurrentFont(QFont(self.current_config["font"]))
@@ -617,6 +635,9 @@ class AnkiRedesignConfigDialog(QDialog):
     # === Persist Settings ===
     def save(self) -> None:
         global config, color_mode
+        config["match_card_template_background_to_theme"] = (
+            self.match_card_template_background_to_theme.isChecked()
+        )
         config["font_customization_enabled"] = self.enable_font_customization.isChecked()
         config["font"] = self.interface_font.currentFont().family()
         config["font_size"] = self.font_size.value()

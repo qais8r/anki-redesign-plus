@@ -128,6 +128,7 @@ def load_custom_style_wrapper():
 # === Webview Styling Hook ===
 def on_webview_will_set_content(web_content: WebContent, context: Optional[Any]) -> None:
     logger.debug(context)
+    current_config = get_config()
     is_card_rendering_context = (
         isinstance(context, Reviewer)
         or context_name_includes(context, "aqt.clayout.CardLayout")
@@ -147,6 +148,8 @@ def on_webview_will_set_content(web_content: WebContent, context: Optional[Any])
         web_content.css.append(css_files_dir['Editor'])
     elif isinstance(context, Reviewer):
         web_content.css.append(css_files_dir['Reviewer'])
+        if current_config.get("match_card_template_background_to_theme", True):
+            web_content.css.append(css_files_dir['ReviewerCardBackground'])
     elif isinstance(context, ReviewerBottomBar):
         web_content.css.append(css_files_dir['BottomBar'])
         web_content.css.append(css_files_dir['ReviewerBottomBar'])
